@@ -1,0 +1,1 @@
+allow cameraserver vendor_data_file:file { getattr open write };

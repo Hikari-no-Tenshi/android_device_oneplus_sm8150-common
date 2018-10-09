@@ -260,6 +260,11 @@ on boot
     # Create hvdcp_opti directory
     mkdir /mnt/vendor/persist/hvdcp_opti 0770 root system
 
+    mkdir /data/vendor/lineage 0770 cameraserver audio
+    write /data/vendor/lineage/client_package_name 0
+    chown cameraserver audio /data/vendor/lineage/client_package_name
+    chmod 0644 /data/vendor/lineage/client_package_name
+
 # msm specific files that need to be created on /data
 on post-fs-data
     mkdir /data/vendor/misc 01771 system system
