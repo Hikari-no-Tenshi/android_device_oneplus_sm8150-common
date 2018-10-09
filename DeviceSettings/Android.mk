@@ -44,6 +44,9 @@ package_resource_overlays := $(strip \
     $(wildcard $(foreach dir, $(DEVICE_PACKAGE_OVERLAYS), \
       $(addprefix $(dir)/, packages/apps/DeviceSettings/res))))
 
+LOCAL_STATIC_JAVA_LIBRARIES := \
+    vendor.oneplus.camera.CameraHIDL-V1.0-java
+
 LOCAL_RESOURCE_DIR := $(package_resource_overlays) $(LOCAL_RESOURCE_DIR)
 LOCAL_PROGUARD_FLAG_FILES := proguard.flags
 LOCAL_MODULE_TAGS := optional
