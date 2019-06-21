@@ -8,6 +8,7 @@
 $(call inherit-product, $(SRC_TARGET_DIR)/product/product_launched_with_p.mk)
 
 # Get non-open-source specific aspects
+$(call inherit-product-if-exists, vendor/oneplus/apps/common.mk)
 $(call inherit-product-if-exists, vendor/oneplus/sm8150-common/sm8150-common-vendor.mk)
 
 # Vendor properties
