@@ -24,4 +24,10 @@
 
     <!-- The padding on the start and the end of the statusbar -->
     <dimen name="status_bar_extra_padding">14dp</dimen>
+
+    <dimen name="keyguard_indication_margin_bottom">28dp</dimen>
+    <dimen name="keyguard_indication_margin_bottom_ambient">28dp</dimen>
+
+    <!-- Bottom margin of the ambient music ticker -->
+    <dimen name="ambient_indication_margin_bottom">178dp</dimen>
 </resources>
