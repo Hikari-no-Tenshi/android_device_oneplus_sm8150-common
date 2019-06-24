@@ -34,7 +34,7 @@
         <!-- Additional button settings (Button settings) -->
         <activity
             android:name=".ButtonSettingsActivity"
-            android:label="@string/button_panel_title">
+            android:label="@string/buttons_dashboard_title">
             <intent-filter>
                 <action android:name="com.android.settings.action.EXTRA_SETTINGS" />
             </intent-filter>
