@@ -29,4 +29,5 @@
     <string name="notification_slider_mode_none">Normal</string>
     <string name="buttons_dashboard_title">Device Extras</string>
     <string name="buttons_dashboard_summary">Alert slider settings</string>
+    <string name="display_mode_title">Refresh rate</string>
 </resources>
