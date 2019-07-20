@@ -12,6 +12,9 @@ binder_call(hal_sensors_default, hal_graphics_allocator_default)
 # Allow binder communication with surfaceflinger
 binder_call(hal_sensors_default, surfaceflinger)
 
+# Allow binder communication with vndservicemanager
+binder_call(hal_sensors_default, vndservicemanager)
+
 # Allow hal_sensors_default to find hal_audio_hwservice
 allow hal_sensors_default hal_audio_hwservice:hwservice_manager find;
 
@@ -52,6 +55,9 @@ allow hal_sensors_default proc_ultrasound:file rw_file_perms;
 # Allow hal_sensors_default to read and write to motor sysfs nodes
 allow hal_sensors_default sysfs_motor:dir search;
 allow hal_sensors_default sysfs_motor:file rw_file_perms;
+
+# Allow hal_sensors_default to read and write to vndbinder_device
+allow hal_sensors_default vndbinder_device:chr_file rw_file_perms;
 
 # Allow hal_sensors_default to read graphics sysfs nodes
 r_dir_file(hal_sensors_default, sysfs_graphics)
