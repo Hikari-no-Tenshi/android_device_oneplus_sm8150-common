@@ -70,9 +70,8 @@ public class DisplayModesSettings extends PreferenceFragment implements RadioGro
         for(int i=0; i < mModesCount; i++){
             if (mDisplayModes[i].getPhysicalWidth() == 1440) {
                 rb[i]  = new RadioButton(getContext());
-                rb[i].setText(" " + mDisplayModes[i].getPhysicalHeight()
-                      + "x" + mDisplayModes[i].getPhysicalWidth() + "@"
-                      + mDisplayModes[i].getRefreshRate());
+                rb[i].setText(" " + mDisplayModes[i].getPhysicalWidth()
+                      + "p" + " " + "(" + mDisplayModes[i].getRefreshRate() + "Hz)");
                 rb[i].setId(i + 1);
                 rb[i].setGravity(Gravity.CENTER_VERTICAL);
                 rb[i].setTextAppearance(android.R.style.TextAppearance_Medium);
