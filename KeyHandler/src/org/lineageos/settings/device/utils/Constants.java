@@ -45,8 +45,9 @@ public class Constants {
     public static final int KEY_VALUE_TOTAL_SILENCE = 0;
     public static final int KEY_VALUE_ALARMS_ONLY = 1;
     public static final int KEY_VALUE_PRIORTY_ONLY = 2;
-    public static final int KEY_VALUE_VIBRATE = 3;
-    public static final int KEY_VALUE_NORMAL = 4;
+    public static final int KEY_VALUE_SILENT = 3;
+    public static final int KEY_VALUE_VIBRATE = 4;
+    public static final int KEY_VALUE_NORMAL = 5;
 
     public static final Map<String, String> sStringKeyPreferenceMap = new HashMap<>();
     public static final Map<Integer, String> sKeyMap = new HashMap<>();
