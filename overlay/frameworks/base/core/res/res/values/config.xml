@@ -441,4 +441,7 @@
          without impacting power, performance, and app compatibility (e.g. protected content). -->
     <bool name="config_nightDisplayAvailable">false</bool>
 
+    <!-- The CPU temperature divider, if needed -->
+    <integer name="config_cpuTempDivider" translatable="false">1000</integer>
+
 </resources>
