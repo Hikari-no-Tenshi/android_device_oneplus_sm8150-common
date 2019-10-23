@@ -19,7 +19,10 @@ package org.lineageos.settings.device;
 import android.content.Context;
 import android.media.AudioManager;
 import android.os.Vibrator;
+import android.util.Log;
 import android.view.KeyEvent;
+
+import java.util.Locale;
 
 import com.android.internal.os.DeviceKeyHandler;
 
@@ -31,6 +34,9 @@ public class KeyHandler implements DeviceKeyHandler {
     private static final int MODE_VIBRATION = 602;
     private static final int MODE_SILENCE = 603;
 
+    private static final String BLOCK_CALIBRATION_PATH = "/sys/bus/platform/devices/soc:tri_state_key/hall_data_calib";
+    private static final String VENDOR_PERSIST_CALIBRATION_PATH = "/mnt/vendor/persist/engineermode/tri_state_hall_data";
+
     private final Context mContext;
     private final AudioManager mAudioManager;
     private final Vibrator mVibrator;
@@ -40,6 +46,23 @@ public class KeyHandler implements DeviceKeyHandler {
 
         mAudioManager = mContext.getSystemService(AudioManager.class);
         mVibrator = mContext.getSystemService(Vibrator.class);
+
+        String hallData = Utils.readLine(VENDOR_PERSIST_CALIBRATION_PATH);
+        if (hallData != null) {
+            try {
+                String[] calibData = hallData.split(",|;");
+                if (calibData != null) {
+                    if (calibData.length == 6) {
+                        String newCalibrationData = String.format(Locale.US, "%s,%s,%s,%s,%s,%s", new Object[]{calibData[0], calibData[1], calibData[2], calibData[3], calibData[4], calibData[5]});
+                        if (newCalibrationData != null) {
+                            Utils.writeValue(BLOCK_CALIBRATION_PATH, newCalibrationData);
+                        }
+                    }
+                }
+            } catch (Exception e) {
+                Log.e(TAG, "failed to init hall data: " + e.getMessage());
+            }
+        }
     }
 
     public KeyEvent handleKeyEvent(KeyEvent event) {
