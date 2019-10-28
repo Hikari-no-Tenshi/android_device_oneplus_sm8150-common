@@ -270,8 +270,8 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     ipacm \
     IPACM_cfg.xml \
-    libipanat \
-    liboffloadhal
+    libipanat:64 \
+    liboffloadhal:64
 
 # IPC router config
 PRODUCT_COPY_FILES += \
@@ -378,7 +378,7 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     android.hardware.sensors@1.0-impl.oneplus_msmnile \
     android.hardware.sensors@1.0-service.oneplus_msmnile \
-    libsensorndkbridge
+    libsensorndkbridge:64
 
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/sensors/hals.conf:$(TARGET_COPY_OUT_VENDOR)/etc/sensors/hals.conf
@@ -441,8 +441,8 @@ PRODUCT_PACKAGES += \
     android.hardware.wifi@1.0-service \
     hostapd \
     libwpa_client \
-    vendor.qti.hardware.wifi.hostapd@1.0.vendor \
-    vendor.qti.hardware.wifi.supplicant@2.0.vendor \
+    vendor.qti.hardware.wifi.hostapd@1.0.vendor:64 \
+    vendor.qti.hardware.wifi.supplicant@2.0.vendor:64 \
     wifi-mac-generator \
     wpa_supplicant \
     wpa_supplicant.conf
