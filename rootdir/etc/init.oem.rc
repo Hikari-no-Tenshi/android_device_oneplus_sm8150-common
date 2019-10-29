@@ -520,7 +520,6 @@ on post-fs
     chmod 666 /sys/devices/platform/vendor/vendor\:motor_pl/direction
     chmod 666 /sys/devices/platform/vendor/vendor\:motor_pl/enable
 
-    chown system system /sys/bus/platform/devices/soc/soc\:tri_state_key/hall_data_calib
     restorecon /sys/class/leds/vibrator/activate
     restorecon /sys/class/leds/vibrator/brightness
     restorecon /sys/class/leds/vibrator/duration
