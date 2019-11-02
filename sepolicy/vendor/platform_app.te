@@ -1,0 +1,2 @@
+allow platform_app hal_display_hwservice:hwservice_manager { find };
+allow platform_app hal_display_default:binder { call };
