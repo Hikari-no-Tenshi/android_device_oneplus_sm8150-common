@@ -418,9 +418,4 @@
          and one pSIM) -->
     <integer name="config_num_physical_slots">2</integer>
 
-    <!-- Show a custom view for FOD -->
-    <bool name="config_needCustomFODView">true</bool>
-
-    <bool name="config_usesOnePlusFOD">true</bool>
-
 </resources>

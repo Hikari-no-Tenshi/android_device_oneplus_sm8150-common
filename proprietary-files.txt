@@ -411,14 +411,8 @@ vendor/lib64/hw/vendor.qti.esepowermanager@1.0-impl.so
 vendor/lib64/vendor.qti.esepowermanager@1.0.so
 
 # Fingerprint
-lib/vendor.oneplus.fingerprint.extension@1.0.so
-lib/vendor.oneplus.hardware.display@1.0.so
-lib64/vendor.oneplus.fingerprint.extension@1.0.so
-lib64/vendor.oneplus.hardware.display@1.0.so
 -vendor/app/QFingerprintService/QFingerprintService.apk
-vendor/bin/hw/android.hardware.biometrics.fingerprint@2.1-service
 vendor/bin/qfp-daemon
-vendor/etc/init/android.hardware.biometrics.fingerprint@2.1-service.rc
 vendor/etc/init/init_qfp_daemon.rc
 vendor/etc/permissions/qti_fingerprint_interface.xml
 vendor/etc/qti_fp/image_quality/templates/double_fan_target_3_6/template1.pgm
@@ -451,7 +445,6 @@ vendor/lib/libsl_fp_impl_util.so
 vendor/lib/libsl_fp_nosec.so
 vendor/lib/libsl_fp_prepro.so
 vendor/lib/vendor.goodix.hardware.biometrics.fingerprint@2.1.so
-vendor/lib/vendor.oneplus.fingerprint.extension@1.0.so
 vendor/lib/vendor.qti.hardware.fingerprint@1.0.so
 vendor/lib64/fp_hal_extension.so
 vendor/lib64/hw/goodix.fod.msmnile.so
@@ -466,8 +459,6 @@ vendor/lib64/libsl_fp_impl_util.so
 vendor/lib64/libsl_fp_nosec.so
 vendor/lib64/libsl_fp_prepro.so
 vendor/lib64/vendor.goodix.hardware.biometrics.fingerprint@2.1.so
-vendor/lib64/vendor.oneplus.fingerprint.extension@1.0.so
-vendor/lib64/vendor.oneplus.hardware.display@1.0.so
 vendor/lib64/vendor.qti.hardware.fingerprint@1.0.so
 
 # FM
