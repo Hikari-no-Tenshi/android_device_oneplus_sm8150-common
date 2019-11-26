@@ -89,7 +89,9 @@ Return<void> FingerprintInscreen::onFinishEnroll() {
 }
 
 Return<void> FingerprintInscreen::onPress() {
-    this->mVendorDisplayService->setMode(OP_DISPLAY_AOD_MODE, 2);
+    if (!isOnePlus7) {
+        this->mVendorDisplayService->setMode(OP_DISPLAY_AOD_MODE, 2);
+    }
     this->mVendorDisplayService->setMode(OP_DISPLAY_SET_DIM, 1);
     if (!isOnePlus7) {
         set(HBM_ENABLE_PATH, 1);
@@ -100,7 +102,9 @@ Return<void> FingerprintInscreen::onPress() {
 }
 
 Return<void> FingerprintInscreen::onRelease() {
-    this->mVendorDisplayService->setMode(OP_DISPLAY_AOD_MODE, 0);
+    if (!isOnePlus7) {
+        this->mVendorDisplayService->setMode(OP_DISPLAY_AOD_MODE, 0);
+    }
     this->mVendorDisplayService->setMode(OP_DISPLAY_SET_DIM, 0);
     if (!isOnePlus7) {
         set(HBM_ENABLE_PATH, 0);
@@ -115,7 +119,9 @@ Return<void> FingerprintInscreen::onShowFODView() {
 }
 
 Return<void> FingerprintInscreen::onHideFODView() {
-    this->mVendorDisplayService->setMode(OP_DISPLAY_AOD_MODE, 0);
+    if (!isOnePlus7) {
+        this->mVendorDisplayService->setMode(OP_DISPLAY_AOD_MODE, 0);
+    }
     this->mVendorDisplayService->setMode(OP_DISPLAY_SET_DIM, 0);
     if (!isOnePlus7) {
         set(HBM_ENABLE_PATH, 0);
@@ -163,8 +169,14 @@ Return<void> FingerprintInscreen::setLongPressEnabled(bool enabled) {
     return Void();
 }
 
-Return<int32_t> FingerprintInscreen::getDimAmount(int32_t) {
+Return<int32_t> FingerprintInscreen::getDimAmount(int32_t brightness) {
     int dimAmount = get(DIM_AMOUNT_PATH, 0);
+    if (isOnePlus7) {
+        dimAmount = 0.70f * 255.0f - brightness;
+        if (dimAmount < 0) {
+            dimAmount = 0;
+        }
+    }
     LOG(INFO) << "dimAmount = " << dimAmount;
 
     return dimAmount;
