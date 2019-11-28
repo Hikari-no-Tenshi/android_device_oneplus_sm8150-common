@@ -232,7 +232,7 @@ Return<int32_t> FingerprintInscreen::getDimAmount(int32_t) {
         int curBrightness = get(BRIGHTNESS_PATH, 0);
         int val = getDimAlpha(curBrightness);
         float alpha = ((float) val) / 255.0f;
-        float ratio = ((float) stof(android::base::GetProperty("vendor.sys.fod.icon.dim", "70"))) / 100.0f;
+        float ratio = ((float) stof(android::base::GetProperty("persist.vendor.sys.fod.icon.dim", "90"))) / 100.0f;
         dimAmount = (alpha * ratio) * 255.0f;
     }
     LOG(INFO) << "dimAmount = " << dimAmount;

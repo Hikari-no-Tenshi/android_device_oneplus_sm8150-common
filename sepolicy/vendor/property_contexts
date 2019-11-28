@@ -14,7 +14,7 @@ persist.vendor.color.matrix    u:object_r:vendor_display_prop:s0
 # Fingerprint
 persist.vendor.sys.fp    u:object_r:vendor_fingerprint_prop:s0
 persist.vendor.oem.fp    u:object_r:vendor_fingerprint_prop:s0
-vendor.sys.fod.icon.dim  u:object_r:vendor_fingerprint_prop:s0
+persist.vendor.sys.fod.icon.dim    u:object_r:vendor_fingerprint_prop:s0
 
 # FTM mode
 ro.boot.ftm_mode    u:object_r:exported_default_prop:s0
