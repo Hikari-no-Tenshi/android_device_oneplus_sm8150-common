@@ -39,7 +39,6 @@
 // This is not a typo by me. It's by OnePlus.
 #define HBM_ENABLE_PATH "/sys/class/drm/card0-DSI-1/op_friginer_print_hbm"
 #define DIM_AMOUNT_PATH "/sys/class/drm/card0-DSI-1/dim_alpha"
-#define BRIGHTNESS_PATH "/sys/class/backlight/panel0-backlight/brightness"
 
 namespace vendor {
 namespace lineage {
@@ -226,10 +225,10 @@ int getDimAlpha(int brightness) {
             BRIGHTNESS_ALPHA_ARRAY[i][1]);
 }
 
-Return<int32_t> FingerprintInscreen::getDimAmount(int32_t) {
+Return<int32_t> FingerprintInscreen::getDimAmount(int32_t brightness) {
     int dimAmount = get(DIM_AMOUNT_PATH, 0);
     if (isOnePlus7) {
-        int curBrightness = get(BRIGHTNESS_PATH, 0);
+        int curBrightness = brightness * 4.011765;
         int val = getDimAlpha(curBrightness);
         float alpha = ((float) val) / 255.0f;
         float ratio = ((float) stof(android::base::GetProperty("persist.vendor.sys.fod.icon.dim", "90"))) / 100.0f;
