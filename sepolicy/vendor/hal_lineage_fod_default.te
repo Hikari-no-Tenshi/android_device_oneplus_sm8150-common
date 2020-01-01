@@ -12,5 +12,3 @@ allow hal_lineage_fod_default hal_fingerprint_hwservice:hwservice_manager find;
 
 # Allow hal_lineage_fod_default to read and write to sysfs_fod
 allow hal_lineage_fod_default sysfs_fod:file rw_file_perms;
-
-get_prop(hal_lineage_fod_default, vendor_fingerprint_prop)
