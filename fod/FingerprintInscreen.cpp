@@ -20,8 +20,6 @@
 #include <android-base/logging.h>
 #include <hidl/HidlTransportSupport.h>
 #include <fstream>
-#include <vector>
-#include <stdlib.h>
 
 #define FINGERPRINT_ACQUIRED_VENDOR 6
 #define FINGERPRINT_ERROR_VENDOR 8
@@ -46,30 +44,6 @@ namespace fingerprint {
 namespace inscreen {
 namespace V1_0 {
 namespace implementation {
-
-const std::vector<std::vector<int>> BRIGHTNESS_ALPHA_ARRAY = {
-    std::vector<int>{0, 255},
-    std::vector<int>{1, 241},
-    std::vector<int>{2, 236},
-    std::vector<int>{4, 235},
-    std::vector<int>{5, 234},
-    std::vector<int>{6, 232},
-    std::vector<int>{10, 228},
-    std::vector<int>{20, 220},
-    std::vector<int>{30, 212},
-    std::vector<int>{45, 204},
-    std::vector<int>{70, 190},
-    std::vector<int>{100, 179},
-    std::vector<int>{150, 166},
-    std::vector<int>{227, 144},
-    std::vector<int>{300, 131},
-    std::vector<int>{400, 112},
-    std::vector<int>{500, 96},
-    std::vector<int>{600, 83},
-    std::vector<int>{800, 60},
-    std::vector<int>{1023, 34},
-    std::vector<int>{2000, 131}
-};
 
 /*
  * Write value to path and close file.
@@ -176,54 +150,12 @@ Return<void> FingerprintInscreen::setLongPressEnabled(bool enabled) {
     return Void();
 }
 
-int interpolate(int x, int xa, int xb, int ya, int yb) {
-    int sub = 0;
-    int bf = (((yb - ya) * 2) * (x - xa)) / (xb - xa);
-    int factor = bf / 2;
-    int plus = bf % 2;
-    if (!(xa - xb == 0 || yb - ya == 0)) {
-        sub = (((2 * (x - xa)) * (x - xb)) / (yb - ya)) / (xa - xb);
-    }
-    return ya + factor + plus + sub;
-}
-
-int getDimAlpha(int brightness) {
-    int level = BRIGHTNESS_ALPHA_ARRAY.size();
-    int i = 0;
-    while (i < level && BRIGHTNESS_ALPHA_ARRAY[i][0] < brightness) {
-        i++;
-    }
-    if (i == 0) {
-        return BRIGHTNESS_ALPHA_ARRAY[0][1];
-    }
-    if (i == level) {
-        return BRIGHTNESS_ALPHA_ARRAY[level - 1][1];
-    }
-    return interpolate(brightness,
-            BRIGHTNESS_ALPHA_ARRAY[i - 1][0],
-            BRIGHTNESS_ALPHA_ARRAY[i][0],
-            BRIGHTNESS_ALPHA_ARRAY[i - 1][1],
-            BRIGHTNESS_ALPHA_ARRAY[i][1]);
-}
-
-#if FOD_DIM
 Return<int32_t> FingerprintInscreen::getDimAmount(int32_t) {
     int dimAmount = get(DIM_AMOUNT_PATH, 0);
     LOG(INFO) << "dimAmount = " << dimAmount;
 
     return dimAmount;
 }
-#else
-Return<int32_t> FingerprintInscreen::getDimAmount(int32_t brightness) {
-    int val = getDimAlpha(brightness * 4.011765);
-    float alpha = ((float) val) / 255.0f;
-    float ratio = ((float) 95) / 100.0f;
-    int dimAmount = (alpha * ratio) * 255.0f;
-    LOG(INFO) << "dimAmount = " << dimAmount;
-
-    return dimAmount;
-}
-#endif
 
 Return<bool> FingerprintInscreen::shouldBoostBrightness() {
     return false;
